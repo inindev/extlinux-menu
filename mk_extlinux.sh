@@ -6,7 +6,7 @@ set -e
 
 EXTL_MENU_ENABLE='auto'   # true, false, auto
 EXTL_MENU_ITEMS=2         # max kernels in menu
-EXTL_MENU_TIMEOUT=4       # timeout in seconds
+EXTL_MENU_TIMEOUT=3       # timeout in seconds
 EXLT_CMD_LINE='ro rootwait ipv6.disable=1'
 
 
@@ -42,7 +42,7 @@ gen_menu_header() {
     echo 'menu title u-boot menu'
     echo "prompt ${mpv}"
     echo 'default l0'
-    echo "timeout $((EXTL_MENU_TIMEOUT * 10))"
+    printf 'timeout %d\n' "$((EXTL_MENU_TIMEOUT * 10))"
 }
 
 gen_menu_item() {
@@ -56,7 +56,7 @@ gen_menu_item() {
     echo "\tmenu label ${PRETTY_NAME} ${kver}"
     echo "\tlinux ${boot_dir}/vmlinuz-${kver}"
     echo "\tinitrd ${boot_dir}/initrd.img-${kver}"
-    echo "\tfdt ${boot_dir}/rk3588-rock-5b.dtb-${kver}"
+    echo "\tfdt ${boot_dir}/<DTB_FILE>-${kver}"
     echo "\tappend ${prms}"
 }
 

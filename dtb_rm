@@ -7,7 +7,7 @@
 # /boot after a kernel is package removed
 
 version="$1"
-target="/boot/rk3588-rock-5b.dtb-${version}"
+target="/boot/<DTB_FILE>-${version}"
 
 # passing the kernel version is required
 if [ -z "${version}" ]; then

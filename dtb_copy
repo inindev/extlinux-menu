@@ -7,8 +7,8 @@
 # after a new kernel is package installed
 
 version="$1"
-source="/usr/lib/linux-image-${version}/rockchip/rk3588-rock-5b.dtb"
-target="/boot/rk3588-rock-5b.dtb-${version}"
+source="/usr/lib/linux-image-${version}/rockchip/<DTB_FILE>"
+target="/boot/<DTB_FILE>-${version}"
 
 # passing the kernel version is required
 if [ -z "${version}" ]; then
