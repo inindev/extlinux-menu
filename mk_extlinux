@@ -35,14 +35,14 @@ gen_menu_header() {
 
     echo '#'
     echo '# this is an automatically generated file'
-    echo '# edit options at the top of the /boot/mk_extlinux.sh file'
-    echo '# then run /boot/mk_extlinux.sh to rebuild'
+    echo '# edit options at the top of the /boot/mk_extlinux file'
+    echo '# then run /boot/mk_extlinux to rebuild'
     echo '#'
     echo
     echo 'menu title u-boot menu'
     echo "prompt ${mpv}"
     echo 'default l0'
-    printf 'timeout %d\n' "$((EXTL_MENU_TIMEOUT * 10))"
+    echo "timeout $((EXTL_MENU_TIMEOUT * 10))"
 }
 
 gen_menu_item() {
@@ -88,7 +88,7 @@ main() {
 }
 
 if [ 0 -ne $(id -u) ]; then
-    echo 'this script must be run as root'
+    echo "E: $(basename "$0"): this script must be run as root"
     exit 9
 fi
 
